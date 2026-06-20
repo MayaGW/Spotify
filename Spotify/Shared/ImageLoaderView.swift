@@ -6,10 +6,14 @@
 //
 
 import SwiftUI
-
+import SDWebImageSwiftUI
 struct ImageLoaderView: View {
+    
+    var urlString: String = Constants.randomImage
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        WebImage(url: URL(string: urlString))
+            
     }
 }
 
