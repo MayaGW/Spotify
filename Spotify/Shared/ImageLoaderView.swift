@@ -10,13 +10,31 @@ import SDWebImageSwiftUI
 struct ImageLoaderView: View {
     
     var urlString: String = Constants.randomImage
+    var resizingMode: ContentMode = .fill
+    
     
     var body: some View {
-        WebImage(url: URL(string: urlString))
+        
+        Rectangle()
+            .opacity(0.001)
+            .overlay {
+                WebImage(url: URL(string: urlString))
+                    .resizable()
+                    .indicator(.activity)
+                    .aspectRatio(contentMode: resizingMode)
+                    .allowsHitTesting(false)
+            }
+            .clipped()
+        
+
             
     }
 }
 
 #Preview {
-    ImageLoaderView()
+   ImageLoaderView()
+  //  Rectangle()
+        .clipShape(.rect(cornerRadius: 20))
+        .padding(40)
+        .padding(.vertical, 60)
 }
