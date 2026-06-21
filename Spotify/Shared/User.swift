@@ -13,7 +13,7 @@ struct UserArray: Codable {
 }
 
 // MARK: - User
-struct User: Codable {
+struct User: Codable, Identifiable {
     let id: Int
     let firstName, lastName: String
     let age: Int
